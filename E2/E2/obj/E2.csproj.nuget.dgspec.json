@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Nova pasta\\POO\\E2\\E2\\E2.csproj": {}
+    "C:\\projects\\POO\\E2\\E2\\E2.csproj": {}
   },
   "projects": {
-    "C:\\Nova pasta\\POO\\E2\\E2\\E2.csproj": {
+    "C:\\projects\\POO\\E2\\E2\\E2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Nova pasta\\POO\\E2\\E2\\E2.csproj",
+        "projectUniqueName": "C:\\projects\\POO\\E2\\E2\\E2.csproj",
         "projectName": "E2",
-        "projectPath": "C:\\Nova pasta\\POO\\E2\\E2\\E2.csproj",
-        "packagesPath": "C:\\Users\\informatica5\\.nuget\\packages\\",
-        "outputPath": "C:\\Nova pasta\\POO\\E2\\E2\\obj\\",
+        "projectPath": "C:\\projects\\POO\\E2\\E2\\E2.csproj",
+        "packagesPath": "C:\\Users\\kreuz\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\POO\\E2\\E2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\informatica5\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kreuz\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\informatica5\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\kreuz\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

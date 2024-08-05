@@ -11,5 +11,8 @@ public interface IFilme
     string Diretor { get; set; }
     decimal preco { get; set; }
     int Estoque { get; set; }
-    
+
+    void AdicionarFilme();
+    void RemoverFilme();
+    void EditarFilme();
 }

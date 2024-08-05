@@ -12,4 +12,8 @@ public interface ICliente
     string Telefone { get; set; }
     decimal Email { get; set; }
     int Endereco { get; set; }
+
+    void AdicionarCliente();
+    void RemoverCliente();
+    void EditarCliente();
 }
