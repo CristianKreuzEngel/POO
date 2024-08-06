@@ -10,8 +10,8 @@ public interface ICliente
     string CPF { get; set; }
     DateTime DataNascimento { get; set; }
     string Telefone { get; set; }
-    decimal Email { get; set; }
-    int Endereco { get; set; }
+    string Email { get; set; }
+    string Endereco { get; set; }
 
     void AdicionarCliente();
     void RemoverCliente();

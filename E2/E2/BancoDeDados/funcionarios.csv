@@ -1,0 +1,3 @@
+﻿Id,Nome,Sobrenome,CPF,DataNascimento,Telefone,Email,Cargo,Salario
+1,Carlos,Pereira,11122233344,1980-12-01,777777777,carlos.pereira@example.com,Gerente,5000.00
+2,Ana,Lima,55566677788,1992-04-10,666666666,ana.lima@example.com,Atendente,2500.00

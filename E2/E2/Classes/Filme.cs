@@ -1,8 +1,9 @@
 ﻿using System;
+using E2.Interfaces;
 
 namespace E2.Classes;
 
-public class Filme
+public class Filme : IFilme
 {
     private int _id;
     private string _titulo;
