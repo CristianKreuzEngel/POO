@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using E2.Interfaces;
 
 namespace E2.Classes;
@@ -6,8 +8,8 @@ namespace E2.Classes;
 public class Locacao : ILocacao
 {
     private int _id;
-    private ICliente _cliente;
-    private IFilme _filme;
+    private string _cliente;
+    private string _filme;
     private DateTime _datalocacao;
     private DateTime _datadevolucao;
     private decimal _valortotal;
@@ -19,13 +21,13 @@ public class Locacao : ILocacao
         set { _id = value; }
     }
 
-    public ICliente Cliente
+    public string Cliente
     {
         get { return _cliente; }
         set { _cliente = value; }
     }
 
-    public IFilme Filme
+    public string Filme
     {
         get { return _filme; }
         set { _filme = value; }
@@ -53,5 +55,40 @@ public class Locacao : ILocacao
     {
         get { return _devolvido; }
         set { _devolvido = value; }
+    }
+    public enum Header
+    {
+        Id = 0,
+        Cliente = 1,
+        Filme = 2,
+        DataLocacao = 3,
+        DataDevolucao = 4,
+        ValorTotal = 5,
+        Devolvido = 6,
+    }
+    public static List<Locacao> ConverterLista(string arquivo)
+    {
+        List<Locacao> locacoes = new();
+
+        var linhas = arquivo.Split('\n').ToList();
+
+        linhas.Remove(linhas.First());
+
+        foreach (var linha in linhas)
+        {
+            Locacao locacao = new()
+            {
+                Id = Convert.ToInt32(linha.Split(';')[(int)Header.Id]),
+                Cliente = linha.Split(";")[(int)Header.Cliente],
+                Filme = linha.Split(";")[(int)Header.Filme],
+                DataLocacao = Convert.ToDateTime(linha.Split(";")[(int)Header.DataLocacao]),
+                DataDevolucao = Convert.ToDateTime(linha.Split(';')[(int)Header.DataDevolucao]),
+                ValorTotal = Convert.ToDecimal(linha.Split(';')[(int)Header.ValorTotal]),
+                Devolvido = Convert.ToBoolean(linha.Split(';')[(int)Header.Devolvido]),
+            };
+            locacoes.Add(locacao);
+        }
+
+        return locacoes;
     }
 }
