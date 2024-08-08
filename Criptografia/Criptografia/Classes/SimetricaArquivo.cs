@@ -18,39 +18,39 @@ public class SymmetricEncryption
         }
     }
 
-    public void EncryptFile(string inputFilePath, string outputFilePath)
+    public void EncryptFile(string filePath)
     {
-        using (Aes aes = Aes.Create())
-        {
-            aes.Key = Convert.FromBase64String(key);
-            aes.IV = Convert.FromBase64String(iv);
+        byte[] data = File.ReadAllBytes(filePath);
+        byte[] encryptedData = EncryptData(data);
 
-            using (FileStream fsInput = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read))
-            using (FileStream fsOutput = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write))
-            using (CryptoStream cs = new CryptoStream(fsOutput, aes.CreateEncryptor(), CryptoStreamMode.Write))
-            {
-                fsInput.CopyTo(cs);
-            }
-        }
+        File.WriteAllBytes(filePath, encryptedData);
     }
 
-    public void DecryptFile(string inputFilePath, string outputFilePath)
+    public void DecryptFile(string filePath)
     {
-        using (Aes aes = Aes.Create())
-        {
-            aes.Key = Convert.FromBase64String(key);
-            aes.IV = Convert.FromBase64String(iv);
+        byte[] encryptedData = File.ReadAllBytes(filePath);
+        byte[] decryptedData = DecryptData(encryptedData);
 
-            using (FileStream fsInput = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read))
-            using (FileStream fsOutput = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write))
-            using (CryptoStream cs = new CryptoStream(fsInput, aes.CreateDecryptor(), CryptoStreamMode.Read))
-            {
-                cs.CopyTo(fsOutput);
-            }
-        }
+        File.WriteAllBytes(filePath, decryptedData);
     }
 
     public string EncryptText(string plainText)
+    {
+        byte[] data = Encoding.UTF8.GetBytes(plainText);
+        byte[] encryptedData = EncryptData(data);
+
+        return Convert.ToBase64String(encryptedData);
+    }
+
+    public string DecryptText(string cipherText)
+    {
+        byte[] encryptedData = Convert.FromBase64String(cipherText);
+        byte[] decryptedData = DecryptData(encryptedData);
+
+        return Encoding.UTF8.GetString(decryptedData);
+    }
+
+    private byte[] EncryptData(byte[] data)
     {
         using (Aes aes = Aes.Create())
         {
@@ -60,27 +60,28 @@ public class SymmetricEncryption
             MemoryStream ms;
             using (ms = new MemoryStream())
             using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
-            using (StreamWriter sw = new StreamWriter(cs))
             {
-                sw.Write(plainText);
+                cs.Write(data, 0, data.Length);
+                cs.Close();
             }
 
-            return Convert.ToBase64String(ms.ToArray());
+            return ms.ToArray();
         }
     }
 
-    public string DecryptText(string cipherText)
+    private byte[] DecryptData(byte[] data)
     {
         using (Aes aes = Aes.Create())
         {
             aes.Key = Convert.FromBase64String(key);
             aes.IV = Convert.FromBase64String(iv);
 
-            using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(cipherText)))
+            using (MemoryStream ms = new MemoryStream(data))
             using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
-            using (StreamReader sr = new StreamReader(cs))
+            using (MemoryStream output = new MemoryStream())
             {
-                return sr.ReadToEnd();
+                cs.CopyTo(output);
+                return output.ToArray();
             }
         }
     }
