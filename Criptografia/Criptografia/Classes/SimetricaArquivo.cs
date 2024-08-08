@@ -57,7 +57,8 @@ public class SymmetricEncryption
             aes.Key = Convert.FromBase64String(key);
             aes.IV = Convert.FromBase64String(iv);
 
-            using (MemoryStream ms = new MemoryStream())
+            MemoryStream ms;
+            using (ms = new MemoryStream())
             using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
             using (StreamWriter sw = new StreamWriter(cs))
             {
