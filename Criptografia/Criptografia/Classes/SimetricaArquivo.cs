@@ -10,7 +10,7 @@ public class SymmetricEncryption
 
     public SymmetricEncryption()
     {
-        // Gerar chave e IV aleatórios para criptografia simétrica
+        
         using (Aes aes = Aes.Create())
         {
             key = Convert.ToBase64String(aes.Key);

@@ -11,12 +11,11 @@ public class AsymmetricEncryption
     {
         rsa = RSA.Create();
     }
-
-    // Método para gerar e salvar chaves RSA
+    
     public void GenerateAndSaveKeys(string publicKeyPath, string privateKeyPath)
     {
-        string publicKey = rsa.ToXmlString(false);  // Chave pública
-        string privateKey = rsa.ToXmlString(true);  // Chave privada
+        string publicKey = rsa.ToXmlString(false);  
+        string privateKey = rsa.ToXmlString(true);  
 
         File.WriteAllText(publicKeyPath, publicKey);
         File.WriteAllText(privateKeyPath, privateKey);

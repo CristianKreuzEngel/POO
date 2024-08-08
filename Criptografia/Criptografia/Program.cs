@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+//git confia
 public class Program
 {
     public static void Main(string[] args)
@@ -8,10 +8,10 @@ public class Program
         AsymmetricEncryption asymmetricEncryption = new AsymmetricEncryption();
         SymmetricEncryption symmetricEncryption = new SymmetricEncryption();
 
-        // Gerar e salvar chaves RSA
+        
         asymmetricEncryption.GenerateAndSaveKeys("publicKey.xml", "privateKey.xml");
 
-        // Ler as chaves dos arquivos
+        
         string publicKey = File.ReadAllText("publicKey.xml");
         string privateKey = File.ReadAllText("privateKey.xml");
 
