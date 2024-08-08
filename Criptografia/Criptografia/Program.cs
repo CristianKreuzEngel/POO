@@ -5,30 +5,103 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        AsymmetricEncryption encryption = new AsymmetricEncryption();
+        AsymmetricEncryption asymmetricEncryption = new AsymmetricEncryption();
 
         // Gerar e salvar chaves RSA
-        encryption.GenerateAndSaveKeys("publicKey.xml", "privateKey.xml");
+        asymmetricEncryption.GenerateAndSaveKeys("publicKey.xml", "privateKey.xml");
 
         // Ler as chaves dos arquivos
         string publicKey = File.ReadAllText("publicKey.xml");
         string privateKey = File.ReadAllText("privateKey.xml");
 
-        // Exemplo de criptografia e descriptografia de texto
-        string originalText = "Abacate";
-        string encryptedText = encryption.EncryptText(originalText, publicKey);
-        string decryptedText = encryption.DecryptText(encryptedText, privateKey);
+        string lastEncryptedText = null;
+        bool exit = false;
 
-        Console.WriteLine("Original: " + originalText);
-        Console.WriteLine("Encrypted: " + encryptedText);
-        Console.WriteLine("Decrypted: " + decryptedText);
+        while (!exit)
+        {
+            Console.WriteLine("Escolha o tipo de criptografia:");
+            Console.WriteLine("1. Criptografia Assimétrica");
+            Console.WriteLine("2. Criptografia Simétrica (Não Implementado)");
+            Console.WriteLine("3. Sair");
+            Console.Write("Opção: ");
+            string choice = Console.ReadLine();
 
-        // Exemplo de criptografia e descriptografia de arquivos
-        string inputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
-        string encryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";  // Substitua pelo caminho do arquivo criptografado
-        string decryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";  // Substitua pelo caminho do arquivo descriptografado
+            switch (choice)
+            {
+                case "1":
+                    ShowAsymmetricMenu(asymmetricEncryption, publicKey, privateKey, ref lastEncryptedText);
+                    break;
+                case "2":
+                    Console.WriteLine("Criptografia Simétrica não está implementada.");
+                    break;
+                case "3":
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
 
-        encryption.EncryptFile(inputFilePath, encryptedFilePath, publicKey);
-        encryption.DecryptFile(encryptedFilePath, decryptedFilePath, privateKey);
+    private static void ShowAsymmetricMenu(AsymmetricEncryption encryption, string publicKey, string privateKey, ref string lastEncryptedText)
+    {
+        bool back = false;
+
+        while (!back)
+        {
+            Console.WriteLine("Escolha a operação:");
+            Console.WriteLine("1. Criptografar um arquivo");
+            Console.WriteLine("2. Descriptografar um arquivo");
+            Console.WriteLine("3. Criptografar um texto");
+            Console.WriteLine("4. Descriptografar o texto criptografado");
+            Console.WriteLine("5. Voltar");
+            Console.Write("Opção: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    string inputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
+                    string encryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto_criptografado.txt";
+                    encryption.EncryptFile(inputFilePath, encryptedFilePath, publicKey);
+                    Console.WriteLine("Arquivo criptografado com sucesso.");
+                    break;
+                case "2":
+                    string encryptedInputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto_criptografado.txt";
+                    string decryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto_descriptografado.txt";
+                    encryption.DecryptFile(encryptedInputFilePath, decryptedFilePath, privateKey);
+                    Console.WriteLine("Arquivo descriptografado com sucesso.");
+                    break;
+                case "3":
+                    string originalText = null;
+                    do
+                    {
+                        Console.Write("Digite o texto a ser criptografado (não pode ser vazio): ");
+                        originalText = Console.ReadLine();
+                    } while (string.IsNullOrWhiteSpace(originalText));
+
+                    lastEncryptedText = encryption.EncryptText(originalText, publicKey);
+                    Console.WriteLine("Texto criptografado: " + lastEncryptedText);
+                    break;
+                case "4":
+                    if (lastEncryptedText == null)
+                    {
+                        Console.WriteLine("Nenhum texto criptografado encontrado.");
+                    }
+                    else
+                    {
+                        string decryptedText = encryption.DecryptText(lastEncryptedText, privateKey);
+                        Console.WriteLine("Texto descriptografado: " + decryptedText);
+                    }
+                    break;
+                case "5":
+                    back = true;
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
     }
 }
