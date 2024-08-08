@@ -64,13 +64,13 @@ public class Program
             {
                 case "1":
                     string inputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
-                    string encryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto_criptografado.txt";
+                    string encryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
                     encryption.EncryptFile(inputFilePath, encryptedFilePath, publicKey);
                     Console.WriteLine("Arquivo criptografado com sucesso.");
                     break;
                 case "2":
-                    string encryptedInputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto_criptografado.txt";
-                    string decryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto_descriptografado.txt";
+                    string encryptedInputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
+                    string decryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
                     encryption.DecryptFile(encryptedInputFilePath, decryptedFilePath, privateKey);
                     Console.WriteLine("Arquivo descriptografado com sucesso.");
                     break;
@@ -124,15 +124,13 @@ public class Program
             switch (choice)
             {
                 case "1":
-                    string inputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
-                    string encryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
-                    encryption.EncryptFile(inputFilePath, encryptedFilePath);
+                    string filePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
+                    encryption.EncryptFile(filePath);
                     Console.WriteLine("Arquivo criptografado com sucesso.");
                     break;
                 case "2":
-                    string encryptedInputFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
-                    string decryptedFilePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
-                    encryption.DecryptFile(encryptedInputFilePath, decryptedFilePath);
+                    filePath = "C:/POO ENGEL/POO/Criptografia/Criptografia/Arquivos/texto.txt";
+                    encryption.DecryptFile(filePath);
                     Console.WriteLine("Arquivo descriptografado com sucesso.");
                     break;
                 case "3":
