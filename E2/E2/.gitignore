@@ -1,4 +1,8 @@
 ﻿/bin
 /obj
 /.idea
+obj
+.idea
+bin
 ./obj
+./bin

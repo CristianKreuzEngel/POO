@@ -13,8 +13,4 @@ public interface IFuncionario
     string Email { get; set; }
     string Cargo { get; set; }
     decimal Salario { get; set; }
-    
-    void AdicionarFuncionario();
-    void RemoverFuncionario();
-    void EditarFuncionario();
 }

@@ -76,15 +76,20 @@ public class Locacao : ILocacao
 
         foreach (var linha in linhas)
         {
+            if (string.IsNullOrWhiteSpace(linha))
+                continue;
+
+            var colunas = linha.Split(',');
+
             Locacao locacao = new()
             {
-                Id = Convert.ToInt32(linha.Split(';')[(int)Header.Id]),
-                Cliente = linha.Split(";")[(int)Header.Cliente],
-                Filme = linha.Split(";")[(int)Header.Filme],
-                DataLocacao = Convert.ToDateTime(linha.Split(";")[(int)Header.DataLocacao]),
-                DataDevolucao = Convert.ToDateTime(linha.Split(';')[(int)Header.DataDevolucao]),
-                ValorTotal = Convert.ToDecimal(linha.Split(';')[(int)Header.ValorTotal]),
-                Devolvido = Convert.ToBoolean(linha.Split(';')[(int)Header.Devolvido]),
+                Id = int.Parse(colunas[(int)Header.Id].Trim()),
+                Cliente = colunas[(int)Header.Cliente].Trim(),
+                Filme = colunas[(int)Header.Filme].Trim(),
+                DataLocacao = DateTime.Parse(colunas[(int)Header.DataLocacao].Trim()),
+                DataDevolucao = DateTime.Parse(colunas[(int)Header.DataDevolucao].Trim()),
+                ValorTotal = decimal.Parse(colunas[(int)Header.ValorTotal].Trim(), System.Globalization.CultureInfo.InvariantCulture),
+                Devolvido = bool.Parse(colunas[(int)Header.Devolvido].Trim())
             };
             locacoes.Add(locacao);
         }

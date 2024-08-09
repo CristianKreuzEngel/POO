@@ -98,21 +98,25 @@ public class Cliente : ICliente
 
         var linhas = arquivo.Split('\n').ToList();
 
-        linhas.Remove(linhas.First());
+        linhas.Remove(linhas.First()); // Remove a linha de cabeçalho
 
         foreach (var linha in linhas)
         {
+            if (string.IsNullOrWhiteSpace(linha))
+                continue;
+
+            var colunas = linha.Split(',');
+
             Cliente cliente = new()
             {
-                Id = Convert.ToInt32(
-                    linha.Split(';')[(int)Header.Id]),
-                Nome = linha.Split(";")[(int)Header.Nome],
-                Sobrenome = linha.Split(";")[(int)Header.Sobrenome],
-                CPF = linha.Split(";")[(int)Header.CPF],
-                DataNascimento = Convert.ToDateTime(linha.Split(';')[(int)Header.DataDeNascimento]),
-                Telefone = linha.Split(';')[(int)Header.Telefone],
-                Email = linha.Split(';')[(int)Header.Email],
-                Endereco = linha.Split(';')[(int)Header.Endereco],
+                Id = int.Parse(colunas[(int)Header.Id].Trim()),
+                Nome = colunas[(int)Header.Nome].Trim(),
+                Sobrenome = colunas[(int)Header.Sobrenome].Trim(),
+                CPF = colunas[(int)Header.CPF].Trim(),
+                DataNascimento = DateTime.Parse(colunas[(int)Header.DataDeNascimento].Trim()),
+                Telefone = colunas[(int)Header.Telefone].Trim(),
+                Email = colunas[(int)Header.Email].Trim(),
+                Endereco = colunas[(int)Header.Endereco].Trim()
             };
             clientes.Add(cliente);
         }
