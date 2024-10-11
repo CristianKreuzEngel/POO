@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\kreuz\\.nuget\\packages\\": {}
+    "/home/cristian/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\POO\\E2\\E2\\E2.csproj",
+      "projectUniqueName": "/home/cristian/projects/POO/E2/E2/E2.csproj",
       "projectName": "E2",
-      "projectPath": "C:\\projects\\POO\\E2\\E2\\E2.csproj",
-      "packagesPath": "C:\\Users\\kreuz\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\POO\\E2\\E2\\obj\\",
+      "projectPath": "/home/cristian/projects/POO/E2/E2/E2.csproj",
+      "packagesPath": "/home/cristian/.nuget/packages/",
+      "outputPath": "/home/cristian/projects/POO/E2/E2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kreuz\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/cristian/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -38,6 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -59,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\kreuz\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/cristian/.dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

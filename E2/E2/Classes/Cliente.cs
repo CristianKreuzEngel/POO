@@ -98,7 +98,7 @@ public class Cliente : ICliente
 
         var linhas = arquivo.Split('\n').ToList();
 
-        linhas.Remove(linhas.First()); // Remove a linha de cabeçalho
+        linhas.Remove(linhas.First());
 
         foreach (var linha in linhas)
         {
