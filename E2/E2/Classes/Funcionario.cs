@@ -8,70 +8,21 @@ namespace E2.Classes;
 
 public class Funcionario : IFuncionario
 {
-    private int _id;
-    private string _nome;
-    private string _sobrenome;
-    private string _cpf;
-    private DateTime _datanascimento;
-    private string _telefone;
-    private string _email;
-    private string _cargo;
-    private decimal _salario;
+    public int Id { get; set; }
 
-    public int Id
-    {
-        get { return _id; }
-        set { _id = value; }
-    }
+    public string Nome { get; set; }
 
-    public string Nome
-    {
-        get { return _nome; }
-        set { _nome = value; }
-    }
+    public string Cpf { get; set; }
 
-    public string Sobrenome
-    {
-        get { return _sobrenome; }
-        set { _sobrenome = value; }
-    }
+    public DateTime DataNascimento { get; set; }
 
-    public string CPF
-    {
-        get { return _cpf; }
-        set { _cpf = value; }
-    }
+    public string Telefone { get; set; }
+    
+    public string Endereco { get; set; }
+    public string Email { get; set; }
 
-    public DateTime DataNascimento
-    {
-        get { return _datanascimento; }
-        set { _datanascimento = value; }
-    }
-
-    public string Telefone
-    {
-        get { return _telefone; }
-        set { _telefone = value; }
-    }
-
-    public string Email
-    {
-        get { return _email; }
-        set { _email = value; }
-    }
-
-    public string Cargo
-    {
-        get { return _cargo; }
-        set { _cargo = value; }
-    }
-
-    public decimal Salario
-    {
-        get { return _salario; }
-        set { _salario = value; }
-    }
-
+    public string Cargo { get; set; }
+    public decimal Salario { get; set; }
     public enum Header
     {
         Id = 0,
@@ -104,8 +55,7 @@ public class Funcionario : IFuncionario
             {
                 Id = int.Parse(colunas[(int)Header.Id].Trim()),
                 Nome = colunas[(int)Header.Nome].Trim(),
-                Sobrenome = colunas[(int)Header.Sobrenome].Trim(),
-                CPF = colunas[(int)Header.CPF].Trim(),
+                Cpf = colunas[(int)Header.CPF].Trim(),
                 DataNascimento = DateTime.Parse(colunas[(int)Header.DataDeNascimento].Trim()),
                 Telefone = colunas[(int)Header.Telefone].Trim(),
                 Email = colunas[(int)Header.Email].Trim(),

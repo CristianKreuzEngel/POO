@@ -4,8 +4,8 @@ namespace E2.Interfaces;
 
 public interface IInventario
 {
-    void AdicionarFilme(IFilme filme);
-    void RemoverFilme(int filmeId);
+    void AdicionarFilme();
+    void RemoverFilme();
     IFilme ConsultarFilme(int filmeId);
     IEnumerable<IFilme> ListarTodosFilmes();
 }

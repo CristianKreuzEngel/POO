@@ -41,8 +41,7 @@ namespace E2.Classes
             {
                 Console.WriteLine($"ID: {cliente.Id}");
                 Console.WriteLine($"Nome: {cliente.Nome}");
-                Console.WriteLine($"Sobrenome: {cliente.Sobrenome}");
-                Console.WriteLine($"CPF: {cliente.CPF}");
+                Console.WriteLine($"CPF: {cliente.Cpf}");
                 Console.WriteLine($"Data de Nascimento: {cliente.DataNascimento.ToShortDateString()}");
                 Console.WriteLine($"Telefone: {cliente.Telefone}");
                 Console.WriteLine($"Email: {cliente.Email}");
@@ -81,8 +80,7 @@ namespace E2.Classes
             {
                 Console.WriteLine($"ID: {funcionario.Id}");
                 Console.WriteLine($"Nome: {funcionario.Nome}");
-                Console.WriteLine($"Sobrenome: {funcionario.Sobrenome}");
-                Console.WriteLine($"CPF: {funcionario.CPF}");
+                Console.WriteLine($"CPF: {funcionario.Cpf}");
                 Console.WriteLine($"Data de Nascimento: {funcionario.DataNascimento.ToShortDateString()}");
                 Console.WriteLine($"Telefone: {funcionario.Telefone}");
                 Console.WriteLine($"Email: {funcionario.Email}");

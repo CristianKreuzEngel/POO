@@ -10,8 +10,42 @@ namespace E2.Classes
     {
         private readonly string caminhoArquivo = @"C:\projects\POO\E2\E2\BancoDeDados\filmes.csv";
         
-        public void AdicionarFilme(IFilme filme)
+        public void AdicionarFilme()
         {
+            Console.Write("Digite o ID do filme: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o título do filme: ");
+            string titulo = Console.ReadLine();
+
+            Console.Write("Digite o gênero do filme: ");
+            string genero = Console.ReadLine();
+
+            Console.Write("Digite a data de lançamento (yyyy-MM-dd): ");
+            DateTime dataLancamento = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Digite o nome do diretor: ");
+            string diretor = Console.ReadLine();
+
+            Console.Write("Digite o preço do filme: ");
+            decimal preco = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Digite o estoque do filme: ");
+            int estoque = int.Parse(Console.ReadLine());
+
+            var filme = new Filme
+            {
+                Id = id,
+                Titulo = titulo,
+                Genero = genero,
+                DataLancamento = dataLancamento,
+                Diretor = diretor,
+                Preco = preco,
+                Estoque = estoque
+            };
+
+            Console.WriteLine("Filme adicionado com sucesso.");
+            
             var filmes = ListarTodosFilmes().ToList();
             filmes.Add(filme);
 
@@ -24,10 +58,13 @@ namespace E2.Classes
             }
         }
 
-        public void RemoverFilme(int filmeId)
+        public void RemoverFilme()
         {
+            Console.Write("Digite o ID do filme a ser removido: ");
+            int id = int.Parse(Console.ReadLine());
+            
             var filmes = ListarTodosFilmes().ToList();
-            var filmeParaRemover = filmes.FirstOrDefault(f => f.Id == filmeId);
+            var filmeParaRemover = filmes.FirstOrDefault(f => f.Id == id);
 
             if (filmeParaRemover != null)
             {

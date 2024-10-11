@@ -6,7 +6,7 @@ namespace E2.Classes;
 public class Pagamento : IPagamento
 {
     private int _id;
-    private ICliente _cliente;
+    private IPessoa _cliente;
     private decimal _valor;
     private DateTime _datapagamento;
     private string _metodopagamento;
@@ -18,7 +18,7 @@ public class Pagamento : IPagamento
         set { _id = value; }
     }
 
-    public ICliente Cliente
+    public IPessoa Cliente
     {
         get { return _cliente; }
         set { _cliente = value; }

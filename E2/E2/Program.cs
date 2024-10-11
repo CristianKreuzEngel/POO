@@ -24,7 +24,6 @@ do
         Console.WriteLine("Opção inválida. Por favor, insira um número.");
         continue;
     }
-
     try
     {
         switch (opcao)
@@ -42,7 +41,7 @@ do
                 relatorio.GerarRelatorioFuncionarios();
                 break;
             case 5:
-                AdicionarFilme(inventario);
+                inventario.AdicionarFilme();
                 break;
             case 6:
                 RemoverFilme(inventario);
@@ -66,58 +65,11 @@ do
 
 } while (opcao != 0);
 
-void AdicionarFilme(Inventario inventario)
-{
-    try
-    {
-        Console.Write("Digite o ID do filme: ");
-        int id = int.Parse(Console.ReadLine());
-
-        Console.Write("Digite o título do filme: ");
-        string titulo = Console.ReadLine();
-
-        Console.Write("Digite o gênero do filme: ");
-        string genero = Console.ReadLine();
-
-        Console.Write("Digite a data de lançamento (yyyy-MM-dd): ");
-        DateTime dataLancamento = DateTime.Parse(Console.ReadLine());
-
-        Console.Write("Digite o nome do diretor: ");
-        string diretor = Console.ReadLine();
-
-        Console.Write("Digite o preço do filme: ");
-        decimal preco = decimal.Parse(Console.ReadLine());
-
-        Console.Write("Digite o estoque do filme: ");
-        int estoque = int.Parse(Console.ReadLine());
-
-        var filme = new Filme
-        {
-            Id = id,
-            Titulo = titulo,
-            Genero = genero,
-            DataLancamento = dataLancamento,
-            Diretor = diretor,
-            Preco = preco,
-            Estoque = estoque
-        };
-
-        inventario.AdicionarFilme(filme);
-
-        Console.WriteLine("Filme adicionado com sucesso.");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Erro ao adicionar filme: {ex.Message}");
-    }
-}
-
 void RemoverFilme(Inventario inventario)
 {
     try
     {
-        Console.Write("Digite o ID do filme a ser removido: ");
-        int id = int.Parse(Console.ReadLine());
+        
 
         inventario.RemoverFilme(id);
 
