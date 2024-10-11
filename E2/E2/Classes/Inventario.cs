@@ -65,7 +65,7 @@ namespace E2.Classes
             
             var filmes = ListarTodosFilmes().ToList();
             var filmeParaRemover = filmes.FirstOrDefault(f => f.Id == id);
-
+            Console.WriteLine("Filme removido com sucesso.");
             if (filmeParaRemover != null)
             {
                 filmes.Remove(filmeParaRemover);
